@@ -6,6 +6,7 @@
 	<title>ChatApp 1.0.0</title>
 </head>
 <script src="/socket.io/socket.io.js" defer></script>
+<script src="./client/index.js" defer></script>
 
 <body>
 	<div id="root-container">
@@ -17,9 +18,10 @@
 				messages
 			</div>
 		</div>
-		<div class='msg-container'>
+		<form class='msg-container'>
 			<input id='msg-input' type="text">
-		</div>
+			<button type='submit'> > </button>
+		</form>
 	</div>
 
 
