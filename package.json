@@ -1,0 +1,32 @@
+{
+  "name": "chatappjs",
+  "version": "1.0.0",
+  "description": "'simple socket chat app'",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LenyPython/Chatapp-JS-socket-io.git"
+  },
+  "keywords": [
+    "chat",
+    "app"
+  ],
+  "author": "Piotr Lenrtowicz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LenyPython/Chatapp-JS-socket-io/issues"
+  },
+  "homepage": "https://github.com/LenyPython/Chatapp-JS-socket-io#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "moment": "^2.29.1",
+    "socket.io": "^4.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
