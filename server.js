@@ -2,34 +2,36 @@ const express = require('express')
 const http = require('http')
 const path = require('path')
 const socketio = require('socket.io')
+const msgData = require('./utils/messages.js')
 
 const app = express()
 const server = http.createServer(app)
 const host = socketio(server)
+const HOST_NAME = 'ChatBot'
 
 //set static folder
 app.use(express.static(path.join(__dirname, 'public')))
 
 // On connection callback
 host.on('connection', client => {
-	client.emit('message', 'Welcome to chat')
-	console.log(`${client.id} connected`)
+	//client joining the room
+	client.on('joinRoom', ({username, room}) => {
+		//HOST send private welcome message to client
+		client.emit('message', msgData(HOST_NAME, `Welcome to chat! You joined ${room}`))
+		//Broadcast to everybody else than socket
+		client.broadcast.emit('message', msgData(username, `${username} joined the chat!`))
 
+	})
 
-	//Broadcast to everybody else than socket
-	client.broadcast.emit('message', `${client.id} joined the chat!`)
+	//Listen to client on sendMsg after that host emit messages to users
+	client.on('sendMsg', msg => {
+		host.emit('message', msgData(client.id, msg))
+	})
 
 	//Client disconnection
 	client.on('disconnect', () => {
-		host.emit('message', `${client.id} left the chat`)
+		host.emit('message', msgData(HOST_NAME, `${client.id} left the chat`))
 	})
-
-	//Listen to clien on sendMsg and host emit msgs to users
-	client.on('sendMsg', msg => {
-		console.log(`Host recieved msg: ${msg}`)
-		host.emit('message', msg)
-	})
-
 })
 
 
