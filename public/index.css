@@ -1,0 +1,66 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: darkblue;
+  color: white;
+  width: 100vw;
+  height: 100vh;
+}
+
+#root {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin: auto;
+  padding-top: 2em;
+  width: 65%;
+  height: 70%;
+}
+#root svg {
+  width: 150px;
+  height: 150px;
+  fill: yellow;
+}
+
+#login-form {
+  position: relative;
+  background: blue;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  height: 50%;
+  width: 100%;
+  margin: auto;
+  padding: 1em;
+  border-radius: 25px;
+}
+#login-form > * {
+  width: 80%;
+  margin: 25px;
+}
+#login-form input, #login-form select {
+  font-size: 2rem;
+}
+#login-form select {
+  width: 50%;
+}
+#login-form button {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 75%);
+  color: drakblue;
+  width: auto;
+  border: none;
+  background: lightblue;
+  border-radius: 10px;
+  padding: 1em 2em;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=index.css.map */

@@ -33,12 +33,10 @@ msgForm.addEventListener('submit', (e) => {
 	msgInput.value = ''
 })
 
-const setRoomName = room => roomName.innerText = room
+const setRoomName = room => roomName.innerText = `Room: ${room}`
 
 
 const populateList = (list) => {
-	usersListEl.innerHTML = ''
-	console.log(list)
 	usersListEl.innerHTML = `
 	${list.map(user => `<li>${user.nick}</li>`).join('')}
 	`
@@ -55,8 +53,10 @@ const Message = (msg) => {
 	const {user, time, message} = msg
 	return (
 		`
-	<p><b>${user}</b> ${time}</p>
-	<p>${message}</p>
+		<div class='msg'>
+		<p><b>${user}</b> ${time}</p>
+		<p class='msg-text'>${message}</p>
+		</div>
 	`
 	)
 }
